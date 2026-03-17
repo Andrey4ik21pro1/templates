@@ -1,0 +1,87 @@
+# Project metadata
+
+project_name:
+  type: str
+  validator: "{% if not project_name %}Required{% endif %}"
+
+package_name:
+  type: str
+  default: "com.example.{{ project_name }}"
+
+package_path:
+  type: str
+  default: "{{ package_name.replace('.', '/') }}"
+
+project_author:
+  type: str
+  default: "andrey4ik21pro1"
+
+version_code:
+  type: int
+  default: 1
+
+version_name:
+  type: str
+  default: "1.0"
+
+min_sdk:
+  type: int
+  default: 26
+
+target_sdk:
+  type: int
+  default: 36
+
+# build.gradle.kts properties
+
+gradle_version:
+  type: str
+  default: "8.13"
+
+jvm_toolchain:
+  type: int
+  default: 21
+
+# signingConfigs
+
+signing:
+  type: bool
+  default: true
+
+store_file:
+  type: str
+  default: "release_key.jks"
+  when: "{{ signing }}"
+
+signing_key:
+  type: str
+  default: "SIGNING_KEY"
+  when: "{{ signing }}"
+
+store_password:
+  type: str
+  default: "KEY_STORE_PASSWORD"
+  when: "{{ signing }}"
+
+key_alias:
+  type: str
+  default: "KEY_STORE_ALIAS"
+  when: "{{ signing }}"
+
+key_password:
+  type: str
+  default: "KEY_STORE_PASSWORD"
+  when: "{{ signing }}"
+
+# git
+
+use_github:
+  type: bool
+  default: true
+
+# copier
+
+_exclude:
+  - copier.yml
+  - "{% if not use_github %}.github/**{% endif %}"
+  - "{% if not use_github %}.github{% endif %}"

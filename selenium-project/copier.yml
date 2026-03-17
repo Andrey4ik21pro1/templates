@@ -1,0 +1,9 @@
+# Project metadata
+
+# ...
+
+# copier
+
+_exclude:
+  - copier.yml
+  - __pycache__
