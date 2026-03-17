@@ -20,7 +20,7 @@ jobs:
 
       - name: Update gradle_version.default in android-project/copier.yml
         run: |
-          yq -i ".gradle_version.default = \"${{ steps.gradle.outputs.version }}\"" android-project/copier.yml
+          sed -i "/gradle_version:/,/default:/ s/default: \".*\"/default: \"${{ steps.gradle.outputs.version }}\"/" android-project/copier.yml
 
       - name: Commit if changed
         run: |
