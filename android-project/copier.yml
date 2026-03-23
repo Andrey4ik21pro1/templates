@@ -36,7 +36,7 @@ target_sdk:
 
 gradle_version:
   type: str
-  default: "9.4.0"
+  default: "9.4.1"
 
 jvm_toolchain:
   type: int
