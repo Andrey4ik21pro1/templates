@@ -13,6 +13,7 @@
 - **python-package:** Python package with pyproject.toml
 - **python-project:** Python project with requirements.txt
 - **selenium-project:** Python project with Selenium
+- **web-project:** static website template
 
 ---
 
