@@ -1,0 +1,10 @@
+# Project metadata
+
+project_name:
+  type: str
+  validator: "{% if not project_name %}Required{% endif %}"
+
+# copier
+
+_exclude:
+  - copier.yml
