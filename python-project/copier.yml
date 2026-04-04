@@ -8,16 +8,38 @@ project_author:
   type: str
   default: "andrey4ik21pro1"
 
-# git
+# github
 
 use_github:
   type: bool
   default: true
+
+use_github_actions:
+  type: bool
+  default: true
+  when: "{{ use_github }}"
+
+use_github_issues:
+  type: bool
+  default: true
+  when: "{{ use_github }}"
+
+use_github_pull_requests:
+  type: bool
+  default: true
+  when: "{{ use_github }}"
 
 # copier
 
 _exclude:
   - copier.yml
   - __pycache__
-  - "{% if not use_github %}.github/**{% endif %}"
-  - "{% if not use_github %}.github{% endif %}"
+  - "{% if not use_github or (not use_github_actions and not use_github_issues and not use_github_pull_requests) %}.github{% endif %}"
+
+  - "{% if not use_github_actions %}.github/workflows/**{% endif %}"
+  - "{% if not use_github_actions %}.github/workflows{% endif %}"
+
+  - "{% if not use_github_issues %}.github/ISSUE_TEMPLATE/**{% endif %}"
+  - "{% if not use_github_issues %}.github/ISSUE_TEMPLATE{% endif %}"
+
+  - "{% if not use_github_pull_requests %}.github/PULL_REQUEST_TEMPLATE.md{% endif %}"
