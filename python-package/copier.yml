@@ -16,7 +16,7 @@ version:
   type: str
   default: "1.0.0"
 
-# git
+# github
 
 use_github:
   type: bool

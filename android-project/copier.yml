@@ -36,7 +36,7 @@ target_sdk:
 
 gradle_version:
   type: str
-  default: "9.4.1"
+  default: "9.3.1"
 
 jvm_toolchain:
   type: int
@@ -73,15 +73,37 @@ key_password:
   default: "KEY_STORE_PASSWORD"
   when: "{{ signing }}"
 
-# git
+# github
 
 use_github:
   type: bool
   default: true
 
+use_github_actions:
+  type: bool
+  default: true
+  when: "{{ use_github }}"
+
+use_github_issues:
+  type: bool
+  default: true
+  when: "{{ use_github }}"
+
+use_github_pull_requests:
+  type: bool
+  default: true
+  when: "{{ use_github }}"
+
 # copier
 
 _exclude:
   - copier.yml
-  - "{% if not use_github %}.github/**{% endif %}"
-  - "{% if not use_github %}.github{% endif %}"
+  - "{% if not use_github or (not use_github_actions and not use_github_issues and not use_github_pull_requests) %}.github{% endif %}"
+
+  - "{% if not use_github_actions %}.github/workflows/**{% endif %}"
+  - "{% if not use_github_actions %}.github/workflows{% endif %}"
+
+  - "{% if not use_github_issues %}.github/ISSUE_TEMPLATE/**{% endif %}"
+  - "{% if not use_github_issues %}.github/ISSUE_TEMPLATE{% endif %}"
+
+  - "{% if not use_github_pull_requests %}.github/PULL_REQUEST_TEMPLATE.md{% endif %}"
