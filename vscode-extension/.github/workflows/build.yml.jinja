@@ -36,18 +36,18 @@ jobs:
           path: "*.vsix"
 
       - name: Extract version
-        if: ${{ inputs.build_type == 'release' }}
+        if: {% raw %}${{ inputs.build_type == 'release' }}{% endraw %}
         id: version
         run: |
           version=$(node -p "require('./package.json').version")
           echo "version=$version" >> $GITHUB_OUTPUT
 
       - name: Create Release
-        if: ${{ inputs.build_type == 'release' }}
+        if: {% raw %}${{ inputs.build_type == 'release' }}{% endraw %}
         uses: svenstaro/upload-release-action@v2
         with:
-          file: {% raw %}${{ project_name }}{% endraw %}-${{ steps.version.outputs.version }}.vsix
-          tag: v${{ steps.version.outputs.version }}
-          asset_name: {% raw %}${{ project_name }}{% endraw %}-${{ steps.version.outputs.version }}.vsix
-          release_name: ${{ steps.version.outputs.version }}
+          file: {{ project_name }}-{% raw %}${{ steps.version.outputs.version }}{% endraw %}.vsix
+          tag: v{% raw %}${{ steps.version.outputs.version }}{% endraw %}
+          asset_name: {{ project_name }}-{% raw %}${{ steps.version.outputs.version }}{% endraw %}.vsix
+          release_name: {% raw %}${{ steps.version.outputs.version }}{% endraw %}
           overwrite: true
