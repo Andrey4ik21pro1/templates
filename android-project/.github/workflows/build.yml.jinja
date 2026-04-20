@@ -31,6 +31,7 @@ jobs:
         uses: gradle/actions/wrapper-validation@v4
 
       - name: Decode Keystore
+        if: {% raw %}${{ inputs.build_type == 'release' }}{% endraw %}
         run: echo "{% raw %}${{{% endraw %} secrets.{{ signing_key }} {% raw %}}}{% endraw %}" | base64 --decode > app/{{ store_file }}
         env:
           {{ signing_key }}: {% raw %}${{ secrets.{% endraw %}{{ signing_key }}{% raw %} }}{% endraw %}
@@ -47,20 +48,19 @@ jobs:
           name: app-{% raw %}${{ inputs.build_type }}{% endraw %}
           path: {% raw %}${{ inputs.build_type == 'release' && 'app/build/outputs/apk/release/app-release.apk' || 'app/build/outputs/apk/debug/app-debug.apk' }}{% endraw %}
 
-      - name: Extract versionName
+      - name: Extract version
         if: {% raw %}${{ inputs.build_type == 'release' }}{% endraw %}
-        id: app_version
+        id: version
         run: |
           version=$(jq -r '.elements[0].versionName' app/build/outputs/apk/release/output-metadata.json)
-          echo "appVersion=$version" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
 
       - name: Create Release
         if: {% raw %}${{ inputs.build_type == 'release' }}{% endraw %}
         uses: svenstaro/upload-release-action@v2
         with:
-          repo_token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
           file: app/build/outputs/apk/release/app-release.apk
-          tag: v{% raw %}${{ steps.app_version.outputs.appVersion }}{% endraw %}
-          asset_name: {{ project_name }}-v{% raw %}${{ steps.app_version.outputs.appVersion }}{% endraw %}.apk
-          release_name: {% raw %}${{ steps.app_version.outputs.appVersion }}{% endraw %}
+          tag: v{% raw %}${{ steps.version.outputs.version }}{% endraw %}
+          asset_name: {{ project_name }}-v{% raw %}${{ steps.version.outputs.version }}{% endraw %}.apk
+          release_name: {% raw %}${{ steps.version.outputs.version }}{% endraw %}
           overwrite: true

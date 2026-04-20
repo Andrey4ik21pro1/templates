@@ -14,6 +14,7 @@
 - **python-project:** Python project with requirements.txt
 - **selenium-project:** Python project with Selenium
 - **web-project:** static website template
+- **vscode-extension:** sample VS Code extension written in JavaScript
 
 ---
 
@@ -23,6 +24,7 @@ pip install copier
 git clone https://github.com/andrey4ik21pro1/templates.git
 copier copy --trust ./templates/android-project ./android-project
 ```
+- or just install [copy-template](https://github.com/andrey4ik21pro1/copy-template)
 
 ---
 

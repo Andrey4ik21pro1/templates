@@ -1,0 +1,19 @@
+{% set content -%}
+const vscode = require("vscode")
+
+function activate(context) {
+	const helloCommand = vscode.commands.registerCommand(
+		"{{ project_name }}.helloWorld",
+		async () => {
+            vscode.window.showInformationMessage("Hello, World!")
+		}
+	)
+
+	context.subscriptions.push(helloCommand)
+}
+
+function deactivate() {}
+
+module.exports = { activate, deactivate }
+{%- endset -%}
+{{ content | replace('\n', '\r\n') }}

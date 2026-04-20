@@ -16,6 +16,10 @@ project_author:
   type: str
   default: "andrey4ik21pro1"
 
+public_project:
+  type: bool
+  default: true
+
 version_code:
   type: int
   default: 1
@@ -87,17 +91,20 @@ use_github_actions:
 use_github_issues:
   type: bool
   default: true
-  when: "{{ use_github }}"
+  when: "{{ use_github and public_project }}"
 
 use_github_pull_requests:
   type: bool
   default: true
-  when: "{{ use_github }}"
+  when: "{{ use_github and public_project }}"
 
 # copier
 
 _exclude:
   - copier.yml
+  - "{% if not public_project %}LICENSE{% endif %}"
+  - "{% if not public_project %}README.md.jinja{% endif %}"
+
   - "{% if not use_github or (not use_github_actions and not use_github_issues and not use_github_pull_requests) %}.github{% endif %}"
 
   - "{% if not use_github_actions %}.github/workflows/**{% endif %}"
