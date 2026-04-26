@@ -14,10 +14,6 @@ android {
         targetSdk = {{ target_sdk }}
         versionCode = {{ version_code }}
         versionName = "{{ version_name }}"
-
-        ndk {
-            abiFilters += listOf("arm64-v8a", "armeabi-v7a")
-        }
     }
 {%- if signing %}
 

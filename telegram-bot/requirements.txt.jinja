@@ -1,0 +1,9 @@
+{% set content -%}
+python-dotenv
+{%- if api_client == 'telebot' %}
+pyTelegramBotAPI==4.*
+{%- else %}
+aiogram==3.*
+{%- endif %}
+{%- endset -%}
+{{ content | replace('\n', '\r\n') }}

@@ -32,7 +32,7 @@ jobs:
 
       - name: Decode Keystore
         if: {% raw %}${{ inputs.build_type == 'release' }}{% endraw %}
-        run: echo "{% raw %}${{{% endraw %} secrets.{{ signing_key }} {% raw %}}}{% endraw %}" | base64 --decode > app/{{ store_file }}
+        run: echo "${{ signing_key }}" | base64 --decode > app/{{ store_file }}
         env:
           {{ signing_key }}: {% raw %}${{ secrets.{% endraw %}{{ signing_key }}{% raw %} }}{% endraw %}
 

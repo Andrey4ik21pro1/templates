@@ -1,0 +1,29 @@
+{% set content -%}
+{% if api_client == 'telebot' -%}
+from dotenv import load_dotenv
+from .bot import bot
+
+load_dotenv()
+
+def main():
+    print("Bot is starting...")
+    bot.infinity_polling()
+
+if __name__ == "__main__":
+    main()
+{%- else -%}
+import asyncio
+from dotenv import load_dotenv
+from .bot import dp, bot
+
+load_dotenv()
+
+async def main():
+    print("Bot is starting...")
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+{%- endif %}
+{%- endset -%}
+{{ content | replace('\n', '\r\n') }}

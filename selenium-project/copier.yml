@@ -1,6 +1,8 @@
 # Project metadata
 
-# ...
+project_name:
+  type: str
+  default: "{{ _folder_name }}"
 
 # copier
 

@@ -2,7 +2,7 @@
 
 project_name:
   type: str
-  validator: "{% if not project_name %}Required{% endif %}"
+  default: "{{ _folder_name }}"
 
 package_name:
   type: str
@@ -50,10 +50,10 @@ _exclude:
   - "{% if not public_project %}LICENSE{% endif %}"
   - "{% if not public_project %}README.md.jinja{% endif %}"
 
-  - "{% if not use_github or (not use_github_actions and not use_github_issues and not use_github_pull_requests) %}.github{% endif %}"
+  - "{% if not use_github or (not use_github_actions and not use_github_issues and not use_github_pull_requests and not use_pypi) %}.github{% endif %}"
 
-  - "{% if not use_github_actions %}.github/workflows/**{% endif %}"
-  - "{% if not use_github_actions %}.github/workflows{% endif %}"
+  - "{% if not use_github_actions and use_pypi %}.github/workflows/**{% endif %}"
+  - "{% if not use_github_actions and use_pypi %}.github/workflows{% endif %}"
 
   - "{% if not use_pypi %}.github/workflows/publish.yml{% endif %}"
 

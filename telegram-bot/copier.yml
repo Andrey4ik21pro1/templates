@@ -4,6 +4,12 @@ project_name:
   type: str
   default: "{{ _folder_name }}"
 
+api_client:
+  type: str
+  choices:
+    - telebot (pyTelegramBotAPI)
+    - aiogram3
+
 # copier
 
 _exclude:
@@ -12,5 +18,3 @@ _exclude:
 
 _tasks:
   - move ".env.example" ".env" >nul 2>&1
-
-_message_after_copy: "Command to run: fastapi dev main.py"

@@ -2,7 +2,7 @@
 
 project_name:
   type: str
-  validator: "{% if not project_name %}Required{% endif %}"
+  default: "{{ _folder_name }}"
 
 # copier
 
