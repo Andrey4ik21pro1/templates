@@ -4,12 +4,6 @@ project_name:
   type: str
   default: "{{ _folder_name }}"
 
-api_client:
-  type: str
-  choices:
-    - telebot (pyTelegramBotAPI)
-    - aiogram3
-
 use_docker:
   type: bool
   default: false

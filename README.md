@@ -9,7 +9,7 @@
 
 ## List
 - **android-project:** Android project with Kotlin DSL and Jetpack Compose
-- **fastapi-server:** simple FastAPI server with health check endpoints
+- **fastapi-project:** simple FastAPI server with Docker deploy
 - **python-package:** Python package with pyproject.toml
 - **python-project:** Python project with requirements.txt
 - **selenium-project:** Python project with Selenium

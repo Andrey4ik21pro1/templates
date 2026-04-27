@@ -1,9 +1,6 @@
 {% set content -%}
 {% if api_client == 'telebot' -%}
-from dotenv import load_dotenv
 from .bot import bot
-
-load_dotenv()
 
 def main():
     print("Bot is starting...")
@@ -13,10 +10,7 @@ if __name__ == "__main__":
     main()
 {%- else -%}
 import asyncio
-from dotenv import load_dotenv
 from .bot import dp, bot
-
-load_dotenv()
 
 async def main():
     print("Bot is starting...")
