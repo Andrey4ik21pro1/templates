@@ -13,8 +13,9 @@
 - **python-package:** Python package with pyproject.toml
 - **python-project:** Python project with requirements.txt
 - **selenium-project:** Python project with Selenium
-- **web-project:** static website template
+- **telegram-bot:** tg bot using aiogram3 / telebot
 - **vscode-extension:** sample VS Code extension written in JavaScript
+- **web-project:** static website template
 
 ---
 
