@@ -52,10 +52,10 @@ _exclude:
 
   - "{% if not use_github or (not use_github_actions and not use_github_issues and not use_github_pull_requests and not use_pypi) %}.github{% endif %}"
 
-  - "{% if not use_github_actions and use_pypi %}.github/workflows/**{% endif %}"
-  - "{% if not use_github_actions and use_pypi %}.github/workflows{% endif %}"
-
+  - "{% if not use_github_actions %}.github/workflows/**{% endif %}"
+  - "{% if not use_github_actions %}!.github/workflows/publish.yml{% endif %}"
   - "{% if not use_pypi %}.github/workflows/publish.yml{% endif %}"
+  - "{% if not use_github_actions and not use_pypi %}.github/workflows{% endif %}"
 
   - "{% if not use_github_issues %}.github/ISSUE_TEMPLATE/**{% endif %}"
   - "{% if not use_github_issues %}.github/ISSUE_TEMPLATE{% endif %}"
