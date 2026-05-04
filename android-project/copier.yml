@@ -38,10 +38,6 @@ target_sdk:
 
 # build.gradle.kts properties
 
-gradle_version:
-  type: str
-  default: "9.3.1"
-
 jvm_toolchain:
   type: int
   default: 21
