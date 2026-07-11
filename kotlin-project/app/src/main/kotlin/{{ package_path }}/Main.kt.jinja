@@ -1,0 +1,8 @@
+{% set content -%}
+package {{ package_name }}
+
+fun main() {
+    println("Hello, World!")
+}
+{%- endset -%}
+{{ content | replace('\n', '\r\n') }}

@@ -7,18 +7,6 @@
 
 ---
 
-## List
-- **android-project:** Android project with Kotlin DSL and Jetpack Compose
-- **fastapi-project:** simple FastAPI server with Docker deploy
-- **python-package:** Python package with pyproject.toml
-- **python-project:** Python project with requirements.txt
-- **selenium-project:** Python project with Selenium
-- **telegram-bot:** tg bot using aiogram3 / telebot
-- **vscode-extension:** sample VS Code extension written in JavaScript
-- **web-project:** static website template
-
----
-
 ## Use
 ```bash
 pip install copier

@@ -1,0 +1,9 @@
+name: {{ project_name }}
+version: "1.0.0"
+main: {{ package_name }}.{{ project_name | title }}
+api-version: "{{ minecraft_version.split('.')[0:2] | join('.') }}"
+
+commands:
+  hello:
+    description: "Hello, World!"
+    usage: /hello

@@ -1,0 +1,28 @@
+plugins {
+    alias(libs.plugins.kotlin.jvm)
+
+    // Apply the application plugin to add support for building a CLI application in Java.
+    application
+}
+
+dependencies {
+{%- if use_kotlinx_libs %}
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.serialization.json)
+{%- else %}
+    // your dependencies here
+{%- endif %}
+}
+
+kotlin {
+    jvmToolchain({{ jvm_toolchain }})
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = "{{ package_name }}.MainKt"
+}
+
+tasks.jar {
+    archiveFileName = "{{ project_name }}.jar"
+}

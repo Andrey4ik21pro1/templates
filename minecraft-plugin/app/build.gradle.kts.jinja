@@ -1,0 +1,31 @@
+plugins {
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.shadow)
+    alias(libs.plugins.run.paper)
+}
+
+dependencies {
+    compileOnly(libs.paper.api)
+{%- if use_kotlinx_libs %}
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.serialization.json)
+{%- endif %}
+}
+
+kotlin {
+    jvmToolchain({{ jvm_toolchain }})
+}
+
+tasks.runServer {
+    minecraftVersion("{{ minecraft_version }}")
+    jvmArgs("-Dcom.mojang.eula.agree=true")
+}
+
+tasks.build {
+    dependsOn("shadowJar")
+}
+
+tasks.shadowJar {
+    archiveBaseName = "{{ project_name }}.jar"
+}

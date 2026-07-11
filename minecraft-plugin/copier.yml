@@ -1,0 +1,73 @@
+# Project metadata
+
+project_name:
+  type: str
+  default: "{{ _folder_name }}"
+
+package_name:
+  type: str
+  default: "com.example.{{ project_name }}"
+
+package_path:
+  type: str
+  default: "{{ package_name.replace('.', '/') }}"
+
+project_author:
+  type: str
+  default: "andrey4ik21pro1"
+
+public_project:
+  type: bool
+  default: true
+
+use_kotlinx_libs:
+  type: bool
+  default: false
+
+# build.gradle.kts properties
+
+jvm_toolchain:
+  type: int
+  default: 21
+
+minecraft_version:
+  type: str
+  default: "1.21.5"
+
+# github
+
+use_github:
+  type: bool
+  default: true
+
+use_github_actions:
+  type: bool
+  default: true
+  when: "{{ use_github }}"
+
+use_github_issues:
+  type: bool
+  default: true
+  when: "{{ use_github and public_project }}"
+
+use_github_pull_requests:
+  type: bool
+  default: true
+  when: "{{ use_github and public_project }}"
+
+# copier
+
+_exclude:
+  - copier.yml
+  - "{% if not public_project %}LICENSE{% endif %}"
+  - "{% if not public_project %}README.md.jinja{% endif %}"
+
+  - "{% if not use_github or (not use_github_actions and not use_github_issues and not use_github_pull_requests) %}.github{% endif %}"
+
+  - "{% if not use_github_actions %}.github/workflows/**{% endif %}"
+  - "{% if not use_github_actions %}.github/workflows{% endif %}"
+
+  - "{% if not use_github_issues %}.github/ISSUE_TEMPLATE/**{% endif %}"
+  - "{% if not use_github_issues %}.github/ISSUE_TEMPLATE{% endif %}"
+
+  - "{% if not use_github_pull_requests %}.github/PULL_REQUEST_TEMPLATE.md{% endif %}"

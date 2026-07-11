@@ -1,0 +1,16 @@
+[versions]
+kotlin = "2.3.0"
+{%- if use_kotlinx_libs %}
+
+kotlinxSerializationJson = "1.8.0"
+coroutines = "1.8.1"
+{%- endif %}
+
+[libraries]
+{%- if use_kotlinx_libs %}
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+{%- endif %}
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

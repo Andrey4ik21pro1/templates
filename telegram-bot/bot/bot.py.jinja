@@ -16,18 +16,19 @@ def echo_all(message):
 {%- else -%}
 import os
 from aiogram import Bot, Dispatcher
-from aiogram.filters import Command
+from aiogram.filters import CommandStart
+from aiogram.types import Message
 
 TOKEN = os.getenv("BOT_TOKEN")
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-@dp.message(Command("start"))
-async def start(message):
+@dp.message(CommandStart())
+async def start(message: Message):
     await message.reply("Hello, World!")
 
 @dp.message()
-async def echo_all(message):
+async def echo_all(message: Message):
     await message.reply(message.text)
 {%- endif %}
 {%- endset -%}

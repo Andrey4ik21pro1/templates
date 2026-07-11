@@ -1,0 +1,23 @@
+[versions]
+kotlin = "2.3.0"
+shadow = "8.3.0"
+runPaper = "2.3.1"
+
+paper = "{{ minecraft_version }}-R0.1-SNAPSHOT"
+{%- if use_kotlinx_libs %}
+kotlinxSerializationJson = "1.8.0"
+coroutines = "1.8.1"
+{%- endif %}
+
+[libraries]
+paper-api = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper" }
+{%- if use_kotlinx_libs %}
+
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+{%- endif %}
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+run-paper = { id = "xyz.jpenilla.run-paper", version.ref = "runPaper" }

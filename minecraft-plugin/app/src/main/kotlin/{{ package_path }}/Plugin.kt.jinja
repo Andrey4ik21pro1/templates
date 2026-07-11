@@ -1,0 +1,19 @@
+{% set content -%}
+package {{ package_name }}
+
+import org.bukkit.plugin.java.JavaPlugin
+import {{ package_name }}.commands.HelloMinecraftCommand
+
+class {{ project_name | title }} : JavaPlugin() {
+    override fun onEnable() {
+        saveDefaultConfig()
+
+        getCommand("hello")?.setExecutor(HelloMinecraftCommand())
+    }
+
+    override fun onDisable() {
+        // disable plugin code
+    }
+}
+{%- endset -%}
+{{ content | replace('\n', '\r\n') }}
