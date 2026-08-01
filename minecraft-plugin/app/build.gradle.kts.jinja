@@ -1,5 +1,8 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+{%- if use_serialization_plugin %}
+    alias(libs.plugins.kotlin.serialization)
+{%- endif %}
     alias(libs.plugins.shadow)
     alias(libs.plugins.run.paper)
 }
@@ -8,8 +11,8 @@ dependencies {
     compileOnly(libs.paper.api)
 {%- if use_kotlinx_libs %}
 
-    implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.coroutines.core)
 {%- endif %}
 }
 

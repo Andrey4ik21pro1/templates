@@ -36,6 +36,16 @@ target_sdk:
   type: int
   default: 36
 
+# libs
+
+use_kotlinx_libs:
+  type: bool
+  default: false
+
+use_serialization_plugin:
+  type: bool
+  default: false
+
 # build.gradle.kts properties
 
 jvm_toolchain:

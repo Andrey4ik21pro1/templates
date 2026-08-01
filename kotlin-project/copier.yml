@@ -20,7 +20,13 @@ public_project:
   type: bool
   default: true
 
+# libs
+
 use_kotlinx_libs:
+  type: bool
+  default: false
+
+use_serialization_plugin:
   type: bool
   default: false
 
