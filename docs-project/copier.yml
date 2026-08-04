@@ -1,0 +1,14 @@
+# Project metadata
+
+project_name:
+  type: str
+  default: "{{ _folder_name }}"
+
+project_author:
+  type: str
+  default: "andrey4ik21pro1"
+
+# copier
+
+_exclude:
+  - copier.yml
