@@ -12,6 +12,10 @@ package_path:
   type: str
   default: "{{ package_name.replace('.', '/') }}"
 
+app_name:
+  type: str
+  default: "{{ project_name | title }}"
+
 project_author:
   type: str
   default: "andrey4ik21pro1"
