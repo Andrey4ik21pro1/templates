@@ -38,7 +38,7 @@ min_sdk:
 
 target_sdk:
   type: int
-  default: 36
+  default: 37
 
 # libs
 
