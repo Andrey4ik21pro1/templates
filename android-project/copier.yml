@@ -50,6 +50,10 @@ use_serialization_plugin:
   type: bool
   default: false
 
+use_datastore:
+  type: bool
+  default: false
+
 # build.gradle.kts properties
 
 jvm_toolchain:
