@@ -58,6 +58,10 @@ use_viewmodel:
   type: bool
   default: false
 
+use_navigation:
+  type: bool
+  default: false
+
 # build.gradle.kts properties
 
 jvm_toolchain:
